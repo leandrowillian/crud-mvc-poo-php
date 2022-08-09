@@ -13,4 +13,13 @@
         {
             $this->model = new ClientModel;
         }
+
+        function getAll()
+        {
+            $results = $this->model->selectAll();
+            require_once("./views/index.php");
+        }
+        
+
+
     }

@@ -17,6 +17,13 @@
             $this->table = 'clients';
         }
 
+        function selectAll()
+        {
+            $sql = $this->conn->query("SELECT * FROM $this->table");;
+            $resultQuery = $sql->fetchAll();
+            return $resultQuery; 
+        }
+
 
 
 

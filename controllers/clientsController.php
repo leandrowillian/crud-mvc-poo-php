@@ -25,7 +25,7 @@
         function get($id)
         {
             $results = $this->model->selectById($id);
-            echo json_encode($results);
+            require_once("./views/index.php");
 
         }
 

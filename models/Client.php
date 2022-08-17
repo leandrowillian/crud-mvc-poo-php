@@ -30,7 +30,7 @@
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id);
             $stmt->execute();
-            $resultQuery = $stmt->fetch($this->conn::FETCH_ASSOC);
+            $resultQuery = $stmt->fetchAll($this->conn::FETCH_ASSOC);
 
             return $resultQuery;
         }

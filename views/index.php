@@ -27,7 +27,7 @@
                         <td><?= $row['email'] ?></td>
                         <td><?= $row['phone'] ?></td>
                     </tr>
-                <?php endforeach ?>
+                <?php endforeach;?>
             </tbody>
 
         </table>

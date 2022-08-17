@@ -19,9 +19,20 @@
 
         function selectAll()
         {
-            $sql = $this->conn->query("SELECT * FROM $this->table");;
+            $sql = $this->conn->query("SELECT * FROM $this->table");
             $resultQuery = $sql->fetchAll();
             return $resultQuery; 
+        }
+
+        function selectById($id)
+        {
+            $sql = "SELECT * FROM $this->table WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $resultQuery = $stmt->fetch($this->conn::FETCH_ASSOC);
+
+            return $resultQuery;
         }
 
 

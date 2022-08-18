@@ -29,5 +29,18 @@
 
         }
 
+        // Função DELETE FROM... WEHERE ID
+        function delete($id = "")
+        {
+            if ($id == "" || $id == null){
+                echo "Informe um id";
+                exit;
+            }else{
+                $response = $this->model->deleteById($id);
+                echo $response;
+                
+            }
+        }
+
 
     }

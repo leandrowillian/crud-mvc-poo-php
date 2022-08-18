@@ -35,6 +35,20 @@
             return $resultQuery;
         }
 
+        function deleteById($id)
+        {
+            $sql = "DELETE FROM $this->table WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            if($stmt->rowCount()){
+                return "Excluído com sucesso!!";
+            }else{
+                return "Não foi possível excluir!";
+            }
+
+        }
+
 
 
 

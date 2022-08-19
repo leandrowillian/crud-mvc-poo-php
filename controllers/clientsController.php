@@ -42,5 +42,28 @@
             }
         }
 
+        // Função de update
+        function update($id = "")
+        {   
+            
+            if ($id == "" || $id == null){
+                echo "Informe um id";
+                exit;
+            }else{
+
+                $dataUser = $this->model->selectById($id)[0];
+                $params = $_POST;
+                
+                foreach($params as $key => $value){
+                    $params[$key] == "" ? $params[$key] = $dataUser[$key] : $params[$key] = $value;
+                }
+               
+                
+                $results = $this->model->updateUser($id, $params);
+                require_once("./views/index.php");
+            }
+        }
+
+        
 
     }

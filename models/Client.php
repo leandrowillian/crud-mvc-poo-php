@@ -49,6 +49,24 @@
 
         }
 
+        function updateUser($id, $params)
+        {
+            
+            $sql = "UPDATE $this->table SET name = :n, email = :e, phone = :p WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":n", $params['name']);
+            $stmt->bindParam(":e", $params['email']);
+            $stmt->bindParam(":p", $params['phone']);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            if($stmt->rowCount()){
+                return $this->selectById($id);
+            }else{
+                echo "Erro ao atualizar usuário";
+            }
+
+        }
+
 
 
 

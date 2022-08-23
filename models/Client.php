@@ -45,6 +45,7 @@
                 return "Excluído com sucesso!!";
             }else{
                 return "Não foi possível excluir!";
+                exit;
             }
 
         }
@@ -63,8 +64,26 @@
                 return $this->selectById($id);
             }else{
                 echo "Erro ao atualizar usuário";
+                exit;
             }
 
+        }
+
+
+        function insertUser($data)
+        {
+            $sql = "INSERT INTO $this->table (name, email, phone) VALUES (:n,:e,:p)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":n", $data['name']);
+            $stmt->bindParam(":e", $data['email']);
+            $stmt->bindParam(":p", $data['phone']);
+            $stmt->execute();
+            if($stmt->rowCount()){
+                return $this->selectAll();
+            }else{
+                echo "Erro ao inserir usuário";
+                exit;
+            }
         }
 
 

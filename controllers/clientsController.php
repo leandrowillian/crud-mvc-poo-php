@@ -64,6 +64,19 @@
             }
         }
 
+
+        // Função de insert
+        function insert()
+        {
+            if(isset($_POST) && $_POST != null){
+                $results = $this->model->insertUser($_POST);
+                require_once("./views/index.php");
+            }else{
+                echo("Preencha os dados corretamentes!");
+            }
+            
+        }
+
         
 
     }
